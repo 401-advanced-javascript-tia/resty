@@ -7,7 +7,7 @@ class Form extends React.Component {
     super(props);
     this.state = {
       link: null,
-      method: null,
+      method: 'get',
     }
   }
   
@@ -23,6 +23,24 @@ class Form extends React.Component {
     this.setState({link});
   }
 
+  handleSubmit = async event => {
+
+    event.preventDefault();
+
+    let raw = await fetch(this.state.link);
+    let headers = await raw.headers.entries()
+    let data = await raw.json();
+    let count = data.count;
+    let results = data.results;
+    // NEED TO PRETTIFY THIS??
+
+    console.log('HEADERS:', headers)
+    console.log('DATA:', data);
+
+    this.props.handler(headers, count, results);
+
+  }
+
 
   render() {
     return (<div className="App-form">
@@ -32,11 +50,11 @@ class Form extends React.Component {
         <li><button value="put" onClick={this.handleMethodClick}>PUT</button></li>
         <li><button value="delete" onClick={this.handleMethodClick}>DELETE</button></li>
       </ul>
-      <form>
+      <form onSubmit={this.handleSubmit}>
         <input type="text" name="url" placeholder="URL" onChange={this.handleChange}/>
         <button>Go!</button>
       </form>
-      <p>{this.state.method} : {this.state.link}</p>
+      {/* <p>{this.state.method} : {this.state.link}</p> */}
     </div>)
   }
 
