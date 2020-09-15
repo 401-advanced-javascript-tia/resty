@@ -40,10 +40,5 @@ class Form extends React.Component {
   }
 }
 
-// function Form() {
-//   return(<form className="App-form">
-//     <input></input>
-//   </form>);
-// }
 
 export default Form;
