@@ -1,0 +1,60 @@
+.App-form {
+  display: flex;
+  flex-direction: column;
+  background: #D2C3C6;
+  border-radius: .5em;
+  margin: .5em;
+  padding: 1em;
+
+}
+
+.App-form > ul {
+  list-style-type: none;
+  display: flex;
+  justify-content: flex-start;
+  flex: 1;
+}
+
+.App-form li {
+  margin: .5em;
+}
+
+.App-form > form {
+  display: flex;
+  justify-content: flex-end;
+  flex: 1;
+}
+
+.App-form input {
+  flex: 1;
+  border-radius: .5em;
+  margin-right: .5em;
+}
+
+.App-form button {
+  background: #F9F5F0;
+  border-radius: .5em;
+}
+
+.App-form p {
+  min-height: 20vh;
+  background-color: #F9F5F0;
+  border-radius: .5em;
+}
+
+
+
+
+// return (<div className="App-form">
+// <ul>
+//   <li><button onClick={this.handleMethodClick}>GET</button></li>
+//   <li><button onClick={this.handleMethodClick}>POST</button></li>
+//   <li><button onClick={this.handleMethodClick}>PUT</button></li>
+//   <li><button onClick={this.handleMethodClick}>DELETE</button></li>
+// </ul>
+// <form>
+//   <input placeholder="URL"/>
+//   <button onClick={this.handleURLClick}>Go!</button>
+// </form>
+// <p>{this.state.link}</p>
+// </div>)

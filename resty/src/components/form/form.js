@@ -1,4 +1,5 @@
 import React from 'react';
+import './form.scss';
 
 class Form extends React.Component {
 
@@ -26,16 +27,18 @@ class Form extends React.Component {
 
 
   render() {
-    return (<div>
-      <h2>URL:</h2>
-      <input/>
-      <button onClick={this.handleURLClick}>Go!</button>
-      <br></br>
-      <button onClick={this.handleMethodClick}>GET</button>
-      <button onClick={this.handleMethodClick}>POST</button>
-      <button onClick={this.handleMethodClick}>PUT</button>
-      <button onClick={this.handleMethodClick}>DELETE</button>
-      <p>{this.state.link}</p>
+    return (<div className="App-form">
+      <ul>
+        <li><button onClick={this.handleMethodClick}>GET</button></li>
+        <li><button onClick={this.handleMethodClick}>POST</button></li>
+        <li><button onClick={this.handleMethodClick}>PUT</button></li>
+        <li><button onClick={this.handleMethodClick}>DELETE</button></li>
+      </ul>
+      <form>
+        <input type="text" name="url" placeholder="URL"/>
+        <button onClick={this.handleURLClick}>Go!</button>
+      </form>
+      <p>{this.state.method} : {this.state.link}</p>
     </div>)
   }
 }
