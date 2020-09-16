@@ -5,7 +5,7 @@ Browser-based, RESTful API testing tool.
 - Tia Low
 
 ## Version
-0.1.0
+0.2.0
 
 ## Collaborators and Resources
 
@@ -20,8 +20,7 @@ Browser-based, RESTful API testing tool.
 ### **Phase 2: Testing and Deployment**
 - Testing of React components and applications
 - Uses best practices for testing Behaviors and Acceptance Criteria
-- Integrates with an online CI framework
-- Deploy to GitHub Pages, Netlify, and/or AWS
+- Deploy to GitHub Pages
 
 ### **Phase 3: State and Props**
 - Create multiple components to handle each aspect of the Application
