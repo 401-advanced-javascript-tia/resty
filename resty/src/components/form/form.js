@@ -18,7 +18,6 @@ class Form extends React.Component {
   }
   
   handleChange = event => {
-    console.log(event.target.value);
     let link = event.target.value;
     this.setState({link});
   }
@@ -32,10 +31,6 @@ class Form extends React.Component {
     let data = await raw.json();
     let count = data.count;
     let results = data.results;
-    // NEED TO PRETTIFY THIS??
-
-    console.log('HEADERS IN FORM.JS:', headers)
-    console.log('DATA IN FORM.JS:', data);
 
     this.props.handler(headers, count, results);
 
@@ -54,7 +49,6 @@ class Form extends React.Component {
         <input type="text" name="url" placeholder="URL" onChange={this.handleChange}/>
         <button>Go!</button>
       </form>
-      {/* <p>{this.state.method} : {this.state.link}</p> */}
     </div>)
   }
 
