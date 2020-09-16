@@ -28,14 +28,14 @@ class Form extends React.Component {
     event.preventDefault();
 
     let raw = await fetch(this.state.link);
-    let headers = await raw.headers.entries()
+    let headers = await raw.headers.get('content-type');
     let data = await raw.json();
     let count = data.count;
     let results = data.results;
     // NEED TO PRETTIFY THIS??
 
-    console.log('HEADERS:', headers)
-    console.log('DATA:', data);
+    console.log('HEADERS IN FORM.JS:', headers)
+    console.log('DATA IN FORM.JS:', data);
 
     this.props.handler(headers, count, results);
 

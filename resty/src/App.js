@@ -11,18 +11,16 @@ class App extends React.Component {
     super(props);
     this.state = {
       count: null,
-      headers: {},
+      headers: null,
       results: [],
     }
   }
 
   //class method that can update state. it gets (takes in as parameters) stuff from this.props.handler on the Form itself and uses it to set state
   handleForm = (headers, count, results) => {
-    console.log('COUNT in APP:', count);
-    console.log('HEADERS in APP:', headers);
-    console.log('RESULTS in APP:', results);
-
-    // headers = {coming: 'soon'};
+    // console.log('COUNT in APP:', count);
+    // console.log('HEADERS in APP:', headers);
+    // console.log('RESULTS in APP:', results);
 
     this.setState({count, results, headers});
   }
