@@ -8,6 +8,7 @@ class Form extends React.Component {
     this.state = {
       link: null,
       method: 'get',
+      data: '',
     }
   }
   
@@ -17,22 +18,28 @@ class Form extends React.Component {
     this.setState({method})
   }
   
-  handleChange = event => {
+  handleURLChange = event => {
     let link = event.target.value;
     this.setState({link});
   }
+
+  changeBody = event => {
+    let data = event.target.value;
+    console.log('DATA IN CHANGEBODY IN FORM.JS:', data);
+  }
+
 
   handleSubmit = async event => {
 
     event.preventDefault();
 
-    let raw = await fetch(this.state.link);
-    let headers = await raw.headers.get('content-type');
-    let data = await raw.json();
-    let count = data.count;
-    let results = data.results;
+    // let raw = await fetch(this.state.link);
+    // let headers = await raw.headers.get('content-type');
+    // let data = await raw.json();
+    // let count = data.count;
+    // let results = data.results;
 
-    this.props.handler(headers, count, results);
+    this.props.handler(this.state);
 
   }
 
@@ -45,8 +52,9 @@ class Form extends React.Component {
         <li><button value="put" onClick={this.handleMethodClick}>PUT</button></li>
         <li><button value="delete" onClick={this.handleMethodClick}>DELETE</button></li>
       </ul>
+      <textarea name="data" onChange={this.changeBody} defaultValue={this.state.data} />
       <form onSubmit={this.handleSubmit}>
-        <input type="text" name="url" placeholder="URL" onChange={this.handleChange}/>
+        <input type="text" name="url" defaultValue={this.state.link} placeholder="URL" onChange={this.handleURLChange}/>
         <button>Go!</button>
       </form>
     </div>)
