@@ -1,14 +1,18 @@
 # resty
 Browser-based, RESTful API testing tool.
 
+## Version
+0.2.0
+
 ## Auther
 - Tia Low
 
-## Version
-0.1.0
+### About
+Full-stack JavaScript developer with a diverse background of personal and professional experience.
+- [Linkedin](https://www.linkedin.com/in/tia-low/)
 
-## Collaborators and Resources
-
+## Collaborations and Resources
+- Alex Whan: [GitHub](https://github.com/alex-whan)
 
 ## Description
 ### **Phase 1: Application Setup**
@@ -20,10 +24,9 @@ Browser-based, RESTful API testing tool.
 ### **Phase 2: Testing and Deployment**
 - Testing of React components and applications
 - Uses best practices for testing Behaviors and Acceptance Criteria
-- Integrates with an online CI framework
-- Deploy to GitHub Pages, Netlify, and/or AWS
 
 ### **Phase 3: State and Props**
+- Deploy to GitHub Pages
 - Create multiple components to handle each aspect of the Application
 - Sharing state and behaviors between components
 - Basic layout and styling
@@ -35,3 +38,4 @@ Browser-based, RESTful API testing tool.
 - RESTy is Deployed and publicly available
 
 ## UML
+![UML](resty-UML.png)

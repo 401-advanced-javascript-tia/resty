@@ -7,7 +7,7 @@ class Form extends React.Component {
     super(props);
     this.state = {
       link: null,
-      method: null,
+      method: 'get',
     }
   }
   
@@ -18,9 +18,22 @@ class Form extends React.Component {
   }
   
   handleChange = event => {
-    console.log(event.target.value);
     let link = event.target.value;
     this.setState({link});
+  }
+
+  handleSubmit = async event => {
+
+    event.preventDefault();
+
+    let raw = await fetch(this.state.link);
+    let headers = await raw.headers.get('content-type');
+    let data = await raw.json();
+    let count = data.count;
+    let results = data.results;
+
+    this.props.handler(headers, count, results);
+
   }
 
 
@@ -32,11 +45,10 @@ class Form extends React.Component {
         <li><button value="put" onClick={this.handleMethodClick}>PUT</button></li>
         <li><button value="delete" onClick={this.handleMethodClick}>DELETE</button></li>
       </ul>
-      <form>
+      <form onSubmit={this.handleSubmit}>
         <input type="text" name="url" placeholder="URL" onChange={this.handleChange}/>
         <button>Go!</button>
       </form>
-      <p>{this.state.method} : {this.state.link}</p>
     </div>)
   }
 
