@@ -18,7 +18,7 @@ function History(props) {
 
   return (
     <aside className="App-history">
-      <h3>Sup! History!</h3>
+      <h4>Search History</h4>
 
       <ul>
         {

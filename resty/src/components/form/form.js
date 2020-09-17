@@ -36,9 +36,11 @@ class Form extends React.Component {
     this.setState({request: newRequest});
   }
 
-  changeBody = event => {
+  handleBodyChange = event => {
     let data = event.target.value;
-    console.log('DATA IN CHANGEBODY IN FORM.JS:', data);
+    console.log('DATA IN handleBodyChange IN FORM.JS:', data);
+    const newRequest = {...this.state.request, data};
+    this.setState({request: newRequest});
   }
 
 
@@ -67,8 +69,8 @@ class Form extends React.Component {
         <li><button value="put" onClick={this.handleMethodClick}>PUT</button></li>
         <li><button value="delete" onClick={this.handleMethodClick}>DELETE</button></li>
       </ul>
-      <textarea name="data" onChange={this.changeBody} defaultValue={this.state.request.data} />
       <form onSubmit={this.handleSubmit}>
+      <textarea name="data" onChange={this.handleBodyChange} defaultValue={this.state.request.data} />
         <input type="text" name="url" defaultValue={this.state.request.url} placeholder="URL" onChange={this.handleURLChange}/>
         <button>Go!</button>
       </form>
