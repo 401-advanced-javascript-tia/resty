@@ -5,22 +5,35 @@ class Form extends React.Component {
 
   constructor(props) {
     super(props);
+
+    console.log('PROPS IN CONSTRUCTOR IN FORM:', props)
+
+    const method = props.request.method || 'get';
+    const url = props.request.url || '';
+    const data = props.request.data ? JSON.stringify(props.request.data) : '';
+
+
     this.state = {
-      link: null,
-      method: 'get',
-      data: '',
-    }
+      request: {
+        method,
+        url,
+        data
+      }
+    };
+
   }
   
   handleMethodClick = event => {
     event.preventDefault();
     let method = event.target.value;
-    this.setState({method})
+    const newRequest = { ...this.state.request, method };
+    this.setState({request: newRequest});
   }
   
   handleURLChange = event => {
-    let link = event.target.value;
-    this.setState({link});
+    let url = event.target.value;
+    const newRequest = { ...this.state.request, url};
+    this.setState({request: newRequest});
   }
 
   changeBody = event => {
@@ -33,13 +46,15 @@ class Form extends React.Component {
 
     event.preventDefault();
 
-    // let raw = await fetch(this.state.link);
+    // let raw = await fetch(this.state.url);
     // let headers = await raw.headers.get('content-type');
     // let data = await raw.json();
     // let count = data.count;
     // let results = data.results;
 
-    this.props.handler(this.state);
+    console.log('+++++ state.req in HANDLESUBMIT FORM>JS:', this.state.request);
+
+    this.props.handler(this.state.request);
 
   }
 
@@ -52,9 +67,9 @@ class Form extends React.Component {
         <li><button value="put" onClick={this.handleMethodClick}>PUT</button></li>
         <li><button value="delete" onClick={this.handleMethodClick}>DELETE</button></li>
       </ul>
-      <textarea name="data" onChange={this.changeBody} defaultValue={this.state.data} />
+      <textarea name="data" onChange={this.changeBody} defaultValue={this.state.request.data} />
       <form onSubmit={this.handleSubmit}>
-        <input type="text" name="url" defaultValue={this.state.link} placeholder="URL" onChange={this.handleURLChange}/>
+        <input type="text" name="url" defaultValue={this.state.request.url} placeholder="URL" onChange={this.handleURLChange}/>
         <button>Go!</button>
       </form>
     </div>)

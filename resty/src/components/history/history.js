@@ -9,6 +9,12 @@ function History(props) {
   const calls = props.calls || {};
 
 
+  function loadRequest(apiCall) {
+    console.log('API CALL IN LOADREQUEST IN HISTORY:', apiCall);
+    //apiCall is obj with method, url, data. booyah!
+
+    props.historyHandler(apiCall);
+  }
 
   return (
     <aside className="App-history">
@@ -23,8 +29,8 @@ function History(props) {
               <span className="method-span">
                 {props.calls[key].method}
               </span>
-              <button className="link-button">
-                {props.calls[key].link}
+              <button className="url-button" onClick={() => loadRequest(props.calls[key])}>
+                {props.calls[key].url}
               </button>
             </li>
           )

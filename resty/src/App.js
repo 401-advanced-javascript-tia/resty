@@ -33,6 +33,8 @@ class App extends React.Component {
   }
 
   updateRequest = (request) => {
+
+    console.log('!!!!REQ IN UPDATEREQUEST:', request);
     this.setState({ request });
   }
 
@@ -66,7 +68,7 @@ class App extends React.Component {
     this.toggleLoading()
     this.updateRequest(request);
 
-    let response = await axios(request.link);
+    let response = await axios(request);
 
     console.log('RESPONSE FROM AXIOS IN FETCHRESULTS:', response);
     console.log('COUNT IN RESPONSE FROM AXIOS IN FETCHRESULTS:', response.data.count);
