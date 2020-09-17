@@ -13,7 +13,7 @@ function Results (props) {
   return (<div className="App-results">
 
 
-  {/* can we do an if else in a ternary, to account for not showing results until there are some? */}
+ {/* the below doesn't work to hide titles before results is true. can i add an if/if else/else into the ternary? */}
 
     {/* { props.loading ? (
       <div className="Results-loading">
@@ -29,6 +29,7 @@ function Results (props) {
   } */}
 
 
+  {/* the loading gif doesnt work in the below */}
   <If conditon={props.loading}>
     <Then>
       <div className="Results-loading">
