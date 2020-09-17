@@ -19,6 +19,10 @@
   margin: .5em;
 }
 
+.App-form > textarea {
+ border-radius: .5em;
+}
+
 .App-form > form {
   display: flex;
   justify-content: flex-end;
@@ -29,6 +33,7 @@
   flex: 1;
   border-radius: .5em;
   margin-right: .5em;
+  margin-left: .5em;
   padding-left: 1em;
 }
 
