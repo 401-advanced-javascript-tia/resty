@@ -34,7 +34,7 @@ class App extends React.Component {
 
   updateRequest = (request) => {
 
-    console.log('!!!!REQ IN UPDATEREQUEST:', request);
+    // console.log('!!!!REQ IN UPDATEREQUEST:', request);
     this.setState({ request });
   }
 
@@ -42,11 +42,11 @@ class App extends React.Component {
 
     let hash = md5(JSON.stringify(request));
 
-    console.log(hash);
+    // console.log(hash);
     
     const history = { ...this.state.history, [hash]: request};
     
-    console.log('HISTORY IN UPDATE HISTORY:', history);
+    // console.log('HISTORY IN UPDATE HISTORY:', history);
 
     this.setState({ history }, () => {
       localStorage.setItem('history', JSON.stringify(this.state.history));
@@ -63,19 +63,19 @@ class App extends React.Component {
   fetchResults = async (request) => {
 
     // i think i need to drill into request
-    console.log('REQUEST IN FETCHRESULTS IN APP:', request);
+    // console.log('REQUEST IN FETCHRESULTS IN APP:', request);
 
     this.toggleLoading()
     this.updateRequest(request);
 
     let response = await axios(request);
 
-    console.log('RESPONSE FROM AXIOS IN FETCHRESULTS:', response);
-    console.log('COUNT IN RESPONSE FROM AXIOS IN FETCHRESULTS:', response.data.count);
+    // console.log('RESPONSE FROM AXIOS IN FETCHRESULTS:', response);
+    // console.log('COUNT IN RESPONSE FROM AXIOS IN FETCHRESULTS:', response.data.count);
 
     setTimeout( () => {
       this.toggleLoading();
-    }, 3000);
+    }, 1000);
 
     this.updateHistory(request);
 
@@ -84,7 +84,10 @@ class App extends React.Component {
   }
 
 
-
+  componentDidMount() {
+    let history = JSON.parse(localStorage.getItem('history'));
+    this.setState({ history });
+  }
 
 
   render(){
