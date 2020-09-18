@@ -1,0 +1,22 @@
+.App-history-page {
+  display: grid;
+  grid-template-columns: 30% 70%;
+}
+
+.App-history-page > aside {
+  border: solid 2px #302D3C;
+  margin: .5em;
+  min-height: 65vmin;
+  border-radius: .3em;
+}
+
+.App-history-page > section {
+  border: solid 2px #302D3C;
+  margin: .5em;
+  min-height: 65vmin;
+  border-radius: .3em;
+}
+
+.App-history-page h2 {
+  margin-left: .5em;
+}

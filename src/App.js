@@ -2,11 +2,14 @@ import React from 'react';
 import md5 from 'md5';
 import axios from 'axios';
 
-// import './design/design.scss';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
+
 import Header from './components/header/header.js';
 import Form from './components/form/form.js';
 import History from './components/history/history.js';
 import Results from './components/results/results.js';
+import HistoryPage from './components/historyPage/history-page.js';
+import Help from './components/help/help.js';
 import Footer from './components/footer/footer.js';
 
 class App extends React.Component {
@@ -23,46 +26,44 @@ class App extends React.Component {
     }
   }
 
-  //class method that can update state. it gets (takes in as parameters) stuff from this.props.handler on the Form itself and uses it to set state
-  // handleForm = (headers, count, results) => {
-  //   this.setState({count, results, headers});
-  // }
 
   toggleLoading = () => {
     this.setState({ loading: !this.state.loading });
   }
 
-  updateRequest = (request) => {
 
+
+  updateRequest = (request) => {
     // console.log('!!!!REQ IN UPDATEREQUEST:', request);
     this.setState({ request });
   }
 
+
+
   updateHistory = (request) => {
 
-    let hash = md5(JSON.stringify(request));
-
     // console.log(hash);
-    
+    let hash = md5(JSON.stringify(request));
     const history = { ...this.state.history, [hash]: request};
-    
-    // console.log('HISTORY IN UPDATE HISTORY:', history);
 
+    // console.log('HISTORY IN UPDATE HISTORY:', history);
+    
     this.setState({ history }, () => {
       localStorage.setItem('history', JSON.stringify(this.state.history));
     });
-
+    
   }
 
-  updateResults = (headers, count, results) => {
 
+  updateResults = (headers, count, results) => {
     this.setState({headers, count, results});
   }
 
 
+
+  // gets (takes in as parameters) stuff from this.props.handler on the Form itself and uses it to do its work
   fetchResults = async (request) => {
 
-    // i think i need to drill into request
     // console.log('REQUEST IN FETCHRESULTS IN APP:', request);
 
     this.toggleLoading()
@@ -93,12 +94,27 @@ class App extends React.Component {
   render(){
   return (
     <div className="App">
-      <Header />
-      {/* <Form handler={this.handleForm}/> */}
-      <Form request={this.state.request} handler={this.fetchResults} />
-      <History historyHandler={this.updateRequest} calls={this.state.history}/>
-      <Results loading={this.state.loading} count={this.state.count} results={this.state.results} headers={this.state.headers} />
-      <Footer />
+      <BrowserRouter>
+        <Header />
+        <Switch>
+
+          <Route exact path="/">
+            <Form request={this.state.request} handler={this.fetchResults} />
+            <History historyHandler={this.updateRequest} calls={this.state.history}/>
+            <Results loading={this.state.loading} count={this.state.count} results={this.state.results} headers={this.state.headers} />
+          </Route>
+
+          <Route exact path="/history">
+            <HistoryPage />
+          </Route>
+
+          <Route exact path="/help">
+            <Help />
+          </Route>
+
+        </Switch>
+        <Footer />
+      </BrowserRouter>
     </div>
   );
   }
