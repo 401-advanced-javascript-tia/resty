@@ -7,13 +7,9 @@ import loading from '../../../src/loading.gif';
 
 function Results (props) {
 
-  console.log('PROPS IN RESULTS.JS:', props);
-
+  // console.log('PROPS IN RESULTS.JS:', props);
 
   return (<div className="App-results">
-
-
- {/* the below doesn't work to hide titles before results is true. can i add an if/if else/else into the ternary? */}
 
     { props.loading ? (
       <div className="Results-loading">
@@ -60,8 +56,6 @@ function whenToShowResults() {
 }
 
 }
-
-
 
 
 export default Results;

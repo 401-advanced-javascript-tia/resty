@@ -6,7 +6,7 @@ class Form extends React.Component {
   constructor(props) {
     super(props);
 
-    console.log('PROPS IN CONSTRUCTOR IN FORM:', props)
+    // console.log('PROPS IN CONSTRUCTOR IN FORM:', props)
 
     const method = props.request.method || 'get';
     const url = props.request.url || '';
@@ -38,7 +38,7 @@ class Form extends React.Component {
 
   handleBodyChange = event => {
     let data = event.target.value;
-    console.log('DATA IN handleBodyChange IN FORM.JS:', data);
+    // console.log('DATA IN handleBodyChange IN FORM.JS:', data);
     const newRequest = {...this.state.request, data};
     this.setState({request: newRequest});
   }
@@ -54,7 +54,7 @@ class Form extends React.Component {
     // let count = data.count;
     // let results = data.results;
 
-    console.log('+++++ state.req in HANDLESUBMIT FORM>JS:', this.state.request);
+    // console.log('+++++ state.req in HANDLESUBMIT FORM>JS:', this.state.request);
 
     this.props.handler(this.state.request);
 
