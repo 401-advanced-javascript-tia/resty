@@ -4,13 +4,13 @@ import './history.scss';
 
 function History(props) {
 
-  console.log('PROPS IN HISTORY.JS:', props.calls);
+  // console.log('PROPS IN HISTORY.JS:', props.calls);
 
   const calls = props.calls || {};
 
 
   function loadRequest(apiCall) {
-    console.log('API CALL IN LOADREQUEST IN HISTORY:', apiCall);
+    // console.log('API CALL IN LOADREQUEST IN HISTORY:', apiCall);
     //apiCall is obj with method, url, data. booyah!
 
     props.historyHandler(apiCall);

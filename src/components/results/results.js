@@ -15,22 +15,17 @@ function Results (props) {
 
  {/* the below doesn't work to hide titles before results is true. can i add an if/if else/else into the ternary? */}
 
-    {/* { props.loading ? (
+    { props.loading ? (
       <div className="Results-loading">
         <img src={loading} alt="Loading" />
       </div>
-    ) : (
-      <>
-        <h3 data-testid="count">Count: {props.count}</h3>
-        <h3>Headers: {JSON.stringify(props.headers)}</h3>
-        <div data-testid="results">Response: <JSONPretty data={props.results}></JSONPretty></div>
-      </>
-    )
-  } */}
+    ) : whenToShowResults()
+  }
 
+  
 
   {/* the loading gif doesnt work in the below */}
-  <If conditon={props.loading}>
+  {/* <If conditon={props.loading}>
     <Then>
       <div className="Results-loading">
         <img src={loading} alt="Loading" />
@@ -45,11 +40,29 @@ function Results (props) {
         </>
       </When>
     </Else>
-  </If>
+  </If> */}
 
   </div>);
 
+function whenToShowResults() {
+  const markup = (
+    <>
+    <h3 data-testid="count">Count: {props.count}</h3>
+    <h3>Headers: {JSON.stringify(props.headers)}</h3>
+    <div data-testid="results">Response: <JSONPretty data={props.results}></JSONPretty></div>
+    </>
+  )
+
+  if(props.results.length >= 1){
+    return markup;
+  }
+
 }
+
+}
+
+
+
 
 export default Results;
 

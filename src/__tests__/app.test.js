@@ -4,12 +4,12 @@ import '@testing-library/jest-dom/extend-expect';
 // import App from '../App.js';
 import Results from '../components/results/results.js';
 
-const person = {
+const person = [{
 
   'name': 'Luke Skywalker',
   'height': '172',
   'mass': '77',
-}
+}];
 
 const header = 'application/json';
 
