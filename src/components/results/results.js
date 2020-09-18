@@ -1,5 +1,5 @@
 import React from 'react';
-import { If, Then, Else, When } from '../if/if.js';
+// import { If, Then, Else, When } from '../if/if.js';
 import JSONPretty from 'react-json-pretty';
 import './results.scss';
 
